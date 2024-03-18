@@ -1,0 +1,27 @@
+import boto3
+aws_mag_con = boto3.session.Session(profile_name="root")
+iam_con = aws_mag_con.resource('iam')
+for each_user in iam_con.users.all():
+    print(each_user.name)
+============================
+
+aws_mag_con = boto3.session.Session(profile_name="root")
+s3_con = aws_mag_con.resource('s3')
+for each_buck in s3_con.buckets.all():
+    print(each_buck.name)
+
+
+iam_con_resource = aws_mag_con.resource(service_name='iam',region_name="us-east-2")
+iam_con_client = aws_mag_con.client(service_name='iam',region_name="us-east-2")
+
+
+for each in iam_con_client.list_users()['Users']:
+    print(each['UserName'])
+
+
+Resource is available only for selected services like 
+cloudformation, cloudwatch, dynamodb,ec2,iam, s3, sns, sqs
+
+client is available for all resources
+
+
