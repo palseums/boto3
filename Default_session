@@ -1,0 +1,6 @@
+For doing default session you need to configure AWS default profile_name
+
+import boto3
+iam_con = boto3.resource('iam')
+for each_user in iam_con.users.all():
+    print(each_user.name)
